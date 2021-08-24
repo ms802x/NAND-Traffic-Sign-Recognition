@@ -22,6 +22,15 @@ The goals / steps of this project are the following:
 [image2]: ./wup/2.png "valid"
 [image3]: ./wup/3.png "testinh"
 [image4]: ./wup/4.png "training"
+[image11]: ./wup/11.jpg "11"
+[image22]: ./wup/22.jpg "22"
+[image33]: ./wup/33.jpg "33"
+[image44]: ./wup/44.jpg "44"
+[image55]: ./wup/55.jpg "55"
+[image66]: ./wup/66.jpg "66"
+[image77]: ./wup/77.jpg "77"
+[image88]: ./wup/88.jpg "88"
+[image99]: ./wup/99.jpg "99"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -65,6 +74,22 @@ The architecture used here is lenet. This architecture recives and input of (32,
 
 In the model, Cx indicate convlutional layers, whereas, Sx are the subsampling layers. The layer C1 produce 6 output features with 28 by 28 by 3 input (RGB). The sub sampling layer S2 downsample the 6 features map recived from C1. Then C3, is a convlutional layer which take the features produced by the S2 and maps them to 10 features map of c3. The fourh layer S4 again downsample C3. Then c5 is convolutional layer with 120 features map connected to S4.  S5 is another layer with 84 units and lastly the output layer is fully conetect softmax function with 43 output 
 
+
+## Solution Finding Approach 
+
+The Lenet have the following charchterstics: 
+
+* 5 layers so it is not complex
+* I can use RPG images as input 
+* connected to softmax
+* ...
+
+This architecture was chosen because it is simple and it was used as clasffier for hand written numbers. The capability of the network to detect hand written numbers gave it an advantage to be used here as traffic sign classfier because traffic signs have specfic shapes as if they were different type of numbers.
+
+
+ The valdiation and testing acuracies were 93.7% and 93.4 respectivly. In finding these acuracies, the epochs, training rate and the mue inside lenet has been modified slightly to get 93.7% acuracy. 
+
+
 ## Model Training
 
 Now in training the model, as I have stated earlier I tried to train gray scale sign images but the prediction was bad so I have used the 3 color rgb image to get more information of the image. The training batch and epochs were 128 and 30 respectivly. The valdiation and testing accuracies were 93.7% and 93.4 respectivly. 
@@ -86,7 +111,16 @@ The optimization algorathem used is AdamOptimizer. What makes this algorathem pr
 Also to make the model give better acuracy, training rate and the epochs had been slightly decreased/increased to get optimum result. the Training rate was 0.003.
 
 ## Model on New Images
+<center>
 
-After training the model, I tried to test it on new trafic sign images from the internet, I got 90% prediction acuracy.  However, my model for the one of the wrong classfied images were confiedent that its classification is correct. The image wrong classfied was the 100km sign was not clear for the algorathem to detect and that is why it was wrong clasified. 
+![alt text][image11] ![alt text][image22] ![alt text][image33]
 
-To see the test images and probablities and the predictions check the html file in the repository. 
+
+![alt text][image44]![alt text][image55]![alt text][image66]
+
+![alt text][image77]![alt text][image88]![alt text][image99]
+</center>
+
+* The images above have good quality except some signs such as 70km, 100 km and no enter sign. Also, some of them have shades over them which may affect the prediction.  
+
+After training the model, I tried to test it on new trafic sign images from the internet, I got 90% prediction acuracy.  However, my model for the one of the wrong classfied images were confiedent that its classification is correct. The image wrong classfied was the 100km sign. This image along with the 70km signs were noisy and not clear for the network to classify them correctly. However, the network was capable to predict the the 70 km sign correctly but for the 100 km it had guessed it to be "No passing for vehicles over 3.5 metric tons". 
